@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();//es una variable que nos ayuda a utilizar express
 const hbs = require('hbs');//Se utilizan los parciales para el codigo que es reutilizable
 require('./hbs/helpers');
+
+//para que me asigne un puerto
+const port = process.env.PORT || 3000;
+
 app.use(express.static(__dirname + '/public'));//En esta linea estamos especificando que esta carpeta
 //va a ser de dominio publico y todo lo que ahi se agregue se va a poder ver en la web.
 
@@ -32,6 +36,6 @@ app.get('/about',  (req, res) => {
 
 });
 
-app.listen(3000, () =>{
-  console.log('Escuchando peticiones por el puerto 3000');
+app.listen(port, () =>{
+  console.log(`Escuchando peticiones por el puerto ${port}`);
 });
